@@ -1,6 +1,6 @@
 {
   "name": "kpfromer-optimized-images-loader",
-  "version": "0.0.1",
+  "version": "0.5.0",
   "description": "Automatically optimize images in webpack projects.",
   "keywords": [
     "webpack",
