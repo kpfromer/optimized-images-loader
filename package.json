@@ -9,7 +9,7 @@
     "optimize"
   ],
   "author": "Cyril Wanner <info@cyr.li>",
-  "homepage": "https://github.com/cyrilwanner/optimized-images-loader#readme",
+  "homepage": "https://github.com/kpfromer/optimized-images-loader#readme",
   "license": "MIT",
   "scripts": {
     "build": "npm run build:js && npm run build:types",
@@ -78,10 +78,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cyrilwanner/optimized-images-loader.git"
+    "url": "git+https://github.com/kpfromer/optimized-images-loader.git"
   },
   "bugs": {
-    "url": "https://github.com/cyrilwanner/optimized-images-loader/issues"
+    "url": "https://github.com/kpfromer/optimized-images-loader/issues"
   },
   "release": {
     "plugins": [
