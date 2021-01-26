@@ -1,12 +1,12 @@
-# optimized-images-loader [![npm version](https://badgen.net/npm/v/optimized-images-loader)](https://www.npmjs.com/package/optimized-images-loader) [![license](https://badgen.net/github/license/cyrilwanner/optimized-images-loader)](https://github.com/cyrilwanner/optimized-images-loader/blob/master/LICENSE) [![downloads](https://badgen.net/npm/dt/optimized-images-loader)](https://www.npmjs.com/package/optimized-images-loader)
+# kpfromer-optimized-images-loader [![npm version](https://badgen.net/npm/v/kpfromer-optimized-images-loader)](https://www.npmjs.com/package/kpfromer-optimized-images-loader) [![license](https://badgen.net/github/license/kpfromer/optimized-images-loader)](https://github.com/kpfromer/optimized-images-loader/blob/master/LICENSE) [![downloads](https://badgen.net/npm/dt/kpfromer-optimized-images-loader)](https://www.npmjs.com/package/kpfromer-optimized-images-loader)
 
 Features:
+
 - **Optimize** images using WebAssembly (runs in every environment)
 - **Image manipulation** provided by various query params (resize, converting, low quality placeholders, ...)
 - **Build cache for images** for faster builds
 - **Convert to WebP** automatically during a webpack build
 - **Inline** small images automatically
-- ...
 
 ## Table of contents
 
@@ -18,7 +18,7 @@ Features:
 ## Installation
 
 ```
-npm install optimized-images-loader
+npm install kpfromer-optimized-images-loader
 ```
 
 Add the loader to your webpack configuration:
@@ -31,7 +31,7 @@ module.exports = {
         test: /\.(png|jpe?g|gif|svg|webp)$/i,
         use: [
           {
-            loader: 'optimized-images-loader',
+            loader: 'kpfromer-optimized-images-loader',
             options: {
               // see below for available options
             },
@@ -45,19 +45,19 @@ module.exports = {
 
 ## Options
 
-| Option | Default | Type | Description |
-| :--- | :------: | :--: | :---------- |
-| limit | `8192` | `number` | Images smaller than this number (in bytes) will get inlined with a data-uri. |
-| optimize | `true` | `boolean` | If this plugin should not optimized images, set this to `false`. You can still resize images, convert them to WebP and use other features in that case. |
-| cacheFolder | `'node_modules/optimized-images-loader/.cache'` | `string` | Images will be cached in this folder to avoid long build times. |
-| includeStrategy | `string` | `'string'` | When using the [?include](#include) query param, it returns a string by default. By setting this value to `'react'`, it returns a React component instead (requires manually installing the additional `@svgr/core` package). |
-| name | `'[name]-[contenthash].[ext]'` | `string` | File name of the images after they got processed. Additionally to the [default placeholders](https://github.com/webpack-contrib/file-loader#placeholders), `[width]` and `[height]` are also available. |
-| outputPath | | `string` | Images will be saved in this directory instead of the default webpack outputPath. |
-| publicPath | | `string` | The public path that should be used for image URLs instead of the default webpack publicPath. |
-| mozjpeg | | `MozjpegOptions` | Specifies the options used to optimize jpeg images. All available options can be seen [here](https://www.npmjs.com/package/@wasm-codecs/mozjpeg#encodeoptions-encodeoptions). |
-| oxipng | | `OxipngOptions` | Specifies the options used to optimize png images. All available options can be seen [here](https://www.npmjs.com/package/@wasm-codecs/oxipng#encodeoptions-encodeoptions). |
-| webp | | `WebpOptions` | Specifies the options used to optimize webp images. All available options can be seen [here](https://sharp.pixelplumbing.com/api-output#webp). |
-| svgo | | `SvgoOptions` | Specifies the options used to optimize svg images. All available options can be seen [here](https://github.com/svg/svgo#what-it-can-do). |
+| Option          |                         Default                          |       Type       | Description                                                                                                                                                                                                                   |
+| :-------------- | :------------------------------------------------------: | :--------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| limit           |                          `8192`                          |     `number`     | Images smaller than this number (in bytes) will get inlined with a data-uri.                                                                                                                                                  |
+| optimize        |                          `true`                          |    `boolean`     | If this plugin should not optimized images, set this to `false`. You can still resize images, convert them to WebP and use other features in that case.                                                                       |
+| cacheFolder     | `'node_modules/kpfromer-optimized-images-loader/.cache'` |     `string`     | Images will be cached in this folder to avoid long build times.                                                                                                                                                               |
+| includeStrategy |                         `string`                         |    `'string'`    | When using the [?include](#include) query param, it returns a string by default. By setting this value to `'react'`, it returns a React component instead (requires manually installing the additional `@svgr/core` package). |
+| name            |              `'[name]-[contenthash].[ext]'`              |     `string`     | File name of the images after they got processed. Additionally to the [default placeholders](https://github.com/webpack-contrib/file-loader#placeholders), `[width]` and `[height]` are also available.                       |
+| outputPath      |                                                          |     `string`     | Images will be saved in this directory instead of the default webpack outputPath.                                                                                                                                             |
+| publicPath      |                                                          |     `string`     | The public path that should be used for image URLs instead of the default webpack publicPath.                                                                                                                                 |
+| mozjpeg         |                                                          | `MozjpegOptions` | Specifies the options used to optimize jpeg images. All available options can be seen [here](https://www.npmjs.com/package/@wasm-codecs/mozjpeg#encodeoptions-encodeoptions).                                                 |
+| oxipng          |                                                          | `OxipngOptions`  | Specifies the options used to optimize png images. All available options can be seen [here](https://www.npmjs.com/package/@wasm-codecs/oxipng#encodeoptions-encodeoptions).                                                   |
+| webp            |                                                          |  `WebpOptions`   | Specifies the options used to optimize webp images. All available options can be seen [here](https://sharp.pixelplumbing.com/api-output#webp).                                                                                |
+| svgo            |                                                          |  `SvgoOptions`   | Specifies the options used to optimize svg images. All available options can be seen [here](https://github.com/svg/svgo#what-it-can-do).                                                                                      |
 
 ## Usage
 
@@ -75,17 +75,17 @@ export default () => (
 
 This loader also provides a variety of query params to provide you even more options:
 
-* [`?include`](#include): Include the raw file directly (useful for SVG icons)
-* [`?webp`](#webp): Convert an image to WebP on the fly
-* [`?inline`](#inline): Force inlining an image (data-uri)
-* [`?url`](#url): Force an URL for a small image (instead of data-uri)
-* [`?original`](#original): Use the original image and do not optimize it
-* [`?lqip`](#lqip): Generate a low quality image placeholder
-* [`?colors`](#colors): Extract the dominant colors of an image
-* [`?width`](#width): Resize an image to the given width
-* [`?height`](#height): Resize an image to the given height
-* [`?trace`](#trace): Use traced outlines as loading placeholder *(currently not supported)*
-* [`?sprite`](#sprite): Use SVG sprites *(currently not supported)*
+- [`?include`](#include): Include the raw file directly (useful for SVG icons)
+- [`?webp`](#webp): Convert an image to WebP on the fly
+- [`?inline`](#inline): Force inlining an image (data-uri)
+- [`?url`](#url): Force an URL for a small image (instead of data-uri)
+- [`?original`](#original): Use the original image and do not optimize it
+- [`?lqip`](#lqip): Generate a low quality image placeholder
+- [`?colors`](#colors): Extract the dominant colors of an image
+- [`?width`](#width): Resize an image to the given width
+- [`?height`](#height): Resize an image to the given height
+- [`?trace`](#trace): Use traced outlines as loading placeholder _(currently not supported)_
+- [`?sprite`](#sprite): Use SVG sprites _(currently not supported)_
 
 #### ?include
 
@@ -95,7 +95,7 @@ By default, it will be included as a normal `string`. If you are in a React proj
 
 #### ?webp
 
-If this `?webp` query parameter is specified, `optimized-images-loader` automatically converts the image to the new WebP format.
+If this `?webp` query parameter is specified, `kpfromer-optimized-images-loader` automatically converts the image to the new WebP format.
 
 For browsers that don't yet support WebP, you may want to also provide a fallback using the `<picture>` tag or use the [`Img`](#img) component which does this out of the box:
 
@@ -125,16 +125,14 @@ You can then display this image as a placeholder until the real (big) image has 
 #### ?colors
 
 This resource query returns you an **array with hex values** of the dominant colors of an image.
-You can also use this as a placeholder until the real image has loaded (e.g. as a background) like the *Google Picture Search* does.
+You can also use this as a placeholder until the real image has loaded (e.g. as a background) like the _Google Picture Search_ does.
 
 The number of colors returned can vary and depends on how many different colors your image has.
 
 ```javascript
 import React from 'react';
 
-export default () => (
-  <div style={{ backgroundColor: require('./images/my-image.jpg?colors')[0] }}>...</div>
-);
+export default () => <div style={{ backgroundColor: require('./images/my-image.jpg?colors')[0] }}>...</div>;
 
 /**
  * require('./images/my-image.jpg?colors')
@@ -146,8 +144,6 @@ export default () => (
 ```
 
 #### ?trace
-
-> Currently not supported
 
 With the `?trace` resource query, you can generate [SVG image outlines](https://twitter.com/mikaelainalem/status/918213244954861569) which can be used as a placeholder while loading the original image.
 
@@ -193,6 +189,6 @@ TODO: needs general documentation
 
 ## License
 
-Licensed under the [MIT](https://github.com/cyrilwanner/optimized-images-loader/blob/master/LICENSE) license.
+Licensed under the [MIT](https://github.com/kpfromer/optimized-images-loader/blob/master/LICENSE) license.
 
 © Copyright Cyril Wanner
